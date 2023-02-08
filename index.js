@@ -17,12 +17,12 @@ async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case 'list':
       const contacts = await contactsOperation.listContacts();
-      console.log(contacts);
+      console.table(contacts);
       break;
 
     case 'get':
       const contactByID = await contactsOperation.getContactById(id);
-      console.log(contactByID);
+      console.table(contactByID);
       if (!contactByID) {
         throw new Error(`product with id={id} not found`);
       }
@@ -30,12 +30,12 @@ async function invokeAction({ action, id, name, email, phone }) {
 
     case 'add':
       const contactAdd = await contactsOperation.addContact(name, email, phone);
-      console.log(contactAdd);
+      console.table(contactAdd);
       break;
 
     case 'remove':
       const contactRemove = await contactsOperation.removeContact(id);
-      console.log(contactRemove);
+      console.table(contactRemove);
       if (!contactRemove) {
         throw new Error(`product with id={id} not found`);
       }
